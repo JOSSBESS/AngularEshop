@@ -1,0 +1,24 @@
+{
+  "name": "group-994510",
+  "version": "1.0.0",
+  "description": "",
+  "main": "Script.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git@rendu-git.etna-alternance.net:module-9231/activity-50328/group-994510"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "bcrypt": "^5.1.0",
+    "cors": "^2.8.5",
+    "jsonwebtoken": "^8.5.1",
+    "mariadb": "^3.0.2",
+    "module": "^1.2.5",
+    "mysql": "^2.18.1",
+    "type": "^2.7.2"
+  }
+}
