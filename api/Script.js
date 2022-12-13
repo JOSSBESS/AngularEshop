@@ -108,16 +108,15 @@ app.get('/me', checkTokenMiddleware, (req, res) => {
 })
 
 app.post('/login', (req, res) => {
-    const name = req.body.username;
+    const name = req.body.username.toString();
     const passwords = req.body.password.toString();
-    const emails = req.body.email;
     // Pas d'information à traiter
-    if (!name || !passwords || !emails) {
-        return res.status(400).json({ message: 'Error. Please enter a username, password and email' })
+    if (!name || !passwords) {
+        return res.status(400).json({ message: 'Error. Please enter a username and/or password' })
     }
     //check password
 
-    db.query('SELECT password from users where name =? and email =? ;',[name, emails], (error, result) => {
+    db.query('SELECT password from users where name =? ;',[name], (error, result) => {
 
         if(result.length <= 0){
             return res.status(400).json({ message: 'you don\'t have a account' })
@@ -127,13 +126,17 @@ app.post('/login', (req, res) => {
                 return res.status(400).json({ message: 'wrong password' })
             }
         })
-            db.query('SELECT id,role from users where password =? AND email = ? AND name =? ;',[result[0].password, emails, name], (error, results) => {
-
+        console.log(name)
+            db.query('SELECT id,email,role from users where password =? AND name =? ;',[result[0].password, name], (error, results) => {
+                console.log(results);
+                console.log(results[0].id);
+                console.log(results[0].email);
+                console.log(results[0].role);
             const token = jwt.sign({
 
                 id: results[0].id,
                 username:name,
-                email: emails,
+                email: results[0].email,
                 password: passwords,
                 role: results[0].role
 

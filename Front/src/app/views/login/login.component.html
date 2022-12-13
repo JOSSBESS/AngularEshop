@@ -6,22 +6,16 @@
                 <div class = "f msgprofile">
 
                         <div>
-                        <label class="labels f" for="name">username:</label>
-                        <input class="form-control f" type="text" id ="name" name="name" placeholder="username...">
+                            <label class="labels f" for="name">username:</label>
+                            <input [(ngModel)]="username" class="form-control f" type="text" id ="name" name="name" placeholder="username...">
                         </div>
 
                         <div>
-                        <label class="labels f" for="email">Email:</label>
-                        <input class="form-control f" type="email" id ="email" name="email" placeholder="email.">
-                        </div>
-
-                        <div>
-                        <label class="labels f" for="password">password:</label>
-                        <input class="form-control f" type="password" id ="password" name="password" placeholder="password...">
-                        </div>
-                        <button class = "profile-button f" type="submit">loggin</button>
-                        <p>no't registered ?<a href = "register">Register</a></p>
-
+                            <label class="labels f" for="password">password:</label>
+                            <input [(ngModel)]="password" class="form-control f" type="password" id ="password" name="password" placeholder="password...">
+                            </div>
+                        <button class = "profile-button f"(click)="login()" type="submit">loggin</button>
+                        <p>no account ?<a href = "register">Register</a></p>
                 </div>
         </form>
     </div>
