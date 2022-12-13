@@ -1,7 +1,8 @@
+
 const express = require('express')
 const jwt = require('jsonwebtoken')
 const cors =require('cors')
-const bcrypt = require('bcrypt')
+const bcrypt = require('bcryptjs')
 const PORT = 8080
 const SECRET = 'AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA'
 
@@ -64,8 +65,6 @@ const checkTokenMiddleware = (req, res, next) => {
 
 app.post('/register', (req, res) => {
 
-    
-
     const name = req.body.username;
     const password = req.body.password.toString();
     const email = req.body.email;
@@ -76,19 +75,20 @@ app.post('/register', (req, res) => {
     return res.status(400).json({ message: 'Error. Please enter username, password and email' })
     }
 
-     
     // Check
     db.query('SELECT * FROM users WHERE name = ? ', [req.body.username], (error, results) => {
         if (results[0]) {
             res.status(400).json({ message: `Error. User ${req.body.username} already exists`})
         } else  {
-            //bcrypt.genSalt(10),function (err, salt) {
-             //   bcrypt.hash(password, salt,function(err, hash) {
-                
-            db.query('INSERT INTO users (email, name, password, role ) VALUES (?, ?, ?, ?)', [email, name,password , role])
-            res.status(201).json({message: `User ${name} created`})
-             //   })
-          //  }
+            db.query('INSERT INTO users (email, name, role ) VALUES (?, ?, ?)', [email, name , role])
+                bcrypt.genSalt(10, function (err, salt) {
+                    bcrypt.hash(password, salt, function (err, hash) {
+                      console.log(hash);
+                      // Store hash in your password DB.
+                      db.query('UPDATE users SET password =? WHERE email =?', [hash, email])
+                      res.status(201).json({message: `User ${name} created succesfully`})
+                    })
+                  })
             }
         }
     )
@@ -122,9 +122,11 @@ app.post('/login', (req, res) => {
         if(result.length <= 0){
             return res.status(400).json({ message: 'you don\'t have a account' })
        }
-        else if(result[0].password !== passwords  ) {
-            return res.status(400).json({ message: 'Error. Wrong login, email or password' })
-        }
+        bcrypt.compare(passwords, result[0].password,function (error, result) {
+            if(result === false) {
+                return res.status(400).json({ message: 'wrong password' })
+            }
+        })
             db.query('SELECT id,role from users where password =? AND email = ? AND name =? ;',[result[0].password, emails, name], (error, results) => {
 
             const token = jwt.sign({
@@ -212,19 +214,19 @@ const decoded = jwt.decode(token, { complete: false })
 //product
 
 app.post('/product/create', checkTokenMiddleware, (req, res) => {
-const token = req.headers.authorization && extractBearerToken(req.headers.authorization)
+
+const auth = req.headers.authorization
+const token = auth && extractBearerToken(auth)
 const decoded = jwt.decode(token, { complete: false })
+
 if(!req.body.name || !req.body.price){
     return res.status(400).json({message: 'error no productname or/and no productprice'})
 }
-db.query('SELECT name from products',(error, result) => {
-if (result === req.body.productname) {
-return res.status(400).json({message: 'error the product already exist'})
-}
-})
-db.query('INSERT INTO products (productname, productprice, userid) VALUES ?, ?, ?;',[req.body.name.toString(), req.body.price, decoded.id],(error, result) => {
+
+
+db.query('INSERT INTO products (productname, productprice, userid) VALUES ( ?, ?, ?)',[req.body.name.toString(), +req.body.price, +decoded.id],(error, result) => {
     if(error){
-        return res.status(400).json({message: 'problem with your name or/and price'})
+        return res.status(400).json({message: error})
     }
     return res.json({message: 'your product have been added succesfully'})
 })
@@ -270,6 +272,9 @@ app.delete('/product/:id', checkTokenMiddleware, (req, res) => {
     return res.json({  })
 })
 
+
+
+
 app.get('/products', (req, res) => {
     db.query('SELECT productname, productprice FROM products;',(error, result) => {
         if(error){
@@ -279,10 +284,15 @@ app.get('/products', (req, res) => {
     })
 })
 
+
+
+
 app.get('/products/', (req, res) => {
     if(!req.body.id) {
         return res.status(400).json({message: 'no id'})
+
     }
+
 db.query('SELECT productname, productprice FROM products WHERE userid = ?;',[req.body.id], (error, result) => {
     if(error){
         return res.status(400).json({message: 'this id have no user'})
