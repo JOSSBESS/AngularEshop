@@ -1,31 +1,31 @@
 <div class="container">
     <div class="row">
         <form>
-            <div class = "txt f">REGISTER</div>
+            <div class = "txt f">register</div>
                 <div class = "f msgprofile">
 
                         <div>
-                        <label class="labels f" for="name">username:</label>
-                        <input class="form-control f" type="text" id ="name" name="name" placeholder="username...">
+                            <label class="labels f" for="username">username:</label>
+                            <input [(ngModel)]="username" class="form-control f" type="text" id ="username" name="username" placeholder="username...">
                         </div>
 
                         <div>
-                        <label class="labels f" for="email">Email:</label>
-                        <input class="form-control f" type="email" id ="email" name="email" placeholder="email.">
+                            <label class="labels f" for="email">email:</label>
+                            <input [(ngModel)]="email" class="form-control f" type="email" id ="email" name="email" placeholder="email...">
                         </div>
 
                         <div>
-                        <label class="labels f" for="password">password:</label>
-                        <input class="form-control f" type="password" id ="password" name="password" placeholder="password...">
+                            <label class="labels f" for="password">password:</label>
+                            <input [(ngModel)]="password" class="form-control f" type="password" id ="password" name="password" placeholder="password...">
                         </div>
 
                         <div>
-                        <label class="labels f" for="confirmpasswordl">confirm password:</label>
-                        <input class="form-control f" type="confirmpassword" id ="confirmpassword" name="confirmpassword" placeholder="confirm password...">
-                        </div> 
+                            <label class="labels f" for="password">confirm password:</label>
+                            <input [(ngModel)]="confirmpassword" class="form-control f" type="password" id ="confirmpassword" name="confirmpassword" placeholder="confirmpassword...">
+                        </div>
 
-                    <button class = "profile-button f" type="submit">update</button>
-
+                        <button class = "profile-button f"(click)="register()" type="submit">connexion</button>
+                        <p>already a account ?<a href = "login">Login</a></p>
                 </div>
         </form>
     </div>

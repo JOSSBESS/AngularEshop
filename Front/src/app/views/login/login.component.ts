@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+
 import { AuthService } from 'src/app/service/auth/auth.service';
 
 @Component({
@@ -13,13 +15,17 @@ export class LoginComponent implements OnInit  {
   password: string =''
 
   constructor(
-    private _authService: AuthService
+    private _authService: AuthService,
+    private router: Router
   ) { }
 
   ngOnInit(): void { }
   
   login() {
     this._authService.login(this.username, this.password)
-    .subscribe()
+    .subscribe(data => {
+      localStorage.setItem('token', data.toString())
+      this.router.navigateByUrl('/products')
+    })
   }
 }

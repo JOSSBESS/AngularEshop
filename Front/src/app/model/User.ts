@@ -1,14 +1,16 @@
 export interface User {
-    id: number;
     username: string;
     password: string;
+    confirmpassword: string;
     email: string;
-    isAdmin: boolean;
+    role: string;
 }
 
+
 export enum UserRole {
-    ADMIN = 1,
-    USER = 0,
+  ADMIN = 'admin',
+  USER = 'user',
+  ROLE_ADMIN = "ROLE_ADMIN"
 }
 
 

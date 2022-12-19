@@ -23,4 +23,7 @@ export class AuthService {
   login(username: string, password: string) {
     return this.http.post(`${this.API_URL}/login`, {username:username, password:password },this.optionrequest)
   }
+  register(username: string,email: string, password: string, confirmpassword: string) {
+    return this.http.post(`${this.API_URL}/register`, {username:username,email:email, password:password, confirmpassword:confirmpassword },this.optionrequest)
+  }
 }
