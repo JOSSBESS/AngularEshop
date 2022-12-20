@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { HttpClient, HttpClientModule } from '@angular/common/http';
+import { HttpClient, HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -12,6 +12,7 @@ import { FormsModule } from '@angular/forms';
 import { RegisterComponent } from './views/register/register.component';
 import { ProductsContainerComponent } from './views/products-container/products-container.component';
 import { Router } from 'express';
+import { jwtInterceptor } from './common/jwt.interceptor';
 
 @NgModule({
   declarations: [
@@ -31,7 +32,8 @@ import { Router } from 'express';
 
   ],
   providers: [
-    HttpClient
+    HttpClient,
+    { provide: HTTP_INTERCEPTORS, useClass: jwtInterceptor,multi: true }
   ],
   bootstrap: [AppComponent]
 })
