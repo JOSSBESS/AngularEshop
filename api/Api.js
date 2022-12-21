@@ -4,7 +4,7 @@ const jwt = require('jsonwebtoken')
 const cors =require('cors')
 const bcrypt = require('bcryptjs')
 const PORT = 8080
-const SECRET = 'AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA'
+const SECRET = '123adc951KOL1***'
 
 //Initialisation de Express 4
 const app = express();
@@ -138,10 +138,11 @@ app.post('/login', (req, res) => {
                 username:name,
                 email: results[0].email,
                 role: results[0].role
+                
 
         }, SECRET, { expiresIn: '3 hours' })
         console.log(token)
-        return res.json({token:`Bearer ${token}`})
+        return res.json(token)
 
         })
     }) 
