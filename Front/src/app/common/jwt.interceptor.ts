@@ -11,7 +11,7 @@ export class jwtInterceptor implements HttpInterceptor {
         private _authService: AuthService
     ) {}
 intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
-        let token = JSON.parse(this._authService.userSubject.value);
+        let token = this._authService.userSubject.value.replace(/"/g, '');
         if (token) {
                     request = request.clone({
                         headers: new HttpHeaders({
@@ -21,6 +21,7 @@ intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<an
                     })
                 })
             }
+            
             return next.handle(request).pipe(
                 catchError((err) =>{
                     if(err.status === 401){

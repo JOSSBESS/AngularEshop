@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { environment } from 'src/environments/environment';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { BehaviorSubject, Observable } from 'rxjs';
+import { Router } from '@angular/router';
 
 
 @Injectable({
@@ -20,7 +21,8 @@ export class AuthService {
   public userSubject: BehaviorSubject<string>
 
   constructor(
-    private http: HttpClient
+    private http: HttpClient,
+    private router: Router
   ) {
     this.userSubject = new BehaviorSubject<string>(localStorage.getItem('token') || '');
     this.user = this.userSubject.asObservable();
@@ -31,5 +33,10 @@ export class AuthService {
   }
   register(username: string,email: string, password: string, confirmpassword: string) {
     return this.http.post(`${this.API_URL}/register`, {username:username,email:email, password:password, confirmpassword:confirmpassword },this.optionrequest)
+  }
+  logout()  {
+    localStorage.removeItem('token');
+    this.userSubject.next('');
+    this.router.navigate(['/login']);
   }
 }

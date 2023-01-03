@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { User, UserRole } from 'src/app/model/User';
+import { User } from 'src/app/model/User';
 import { ProfileService } from 'src/app/service/profile/profile.service';
 
 @Component({
@@ -17,7 +17,7 @@ export class ProfileComponent implements OnInit {
   ngOnInit(): void {
     this._ProfileService.getUserInfo().subscribe(data => {
       this.user = data
-      if(data.role === UserRole.ROLE_ADMIN)
+      if(data.role === "admin")
         this.user.role = 'admin'
         else
           this.user.role = 'user'

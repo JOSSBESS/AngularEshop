@@ -65,10 +65,10 @@ const checkTokenMiddleware = (req, res, next) => {
 
 app.post('/register', (req, res) => {
 
-    const name = req.body.username.toString();
-    const password = req.body.password.toString();
-    const verifpassword = req.body.confirmpassword.toString();
-    const email = req.body.email.toString();
+    const name = req.body.username;
+    const password = req.body.password;
+    const verifpassword = req.body.confirmpassword;
+    const email = req.body.email;
     const role = 'user';
 
     // Aucune informations à traiter

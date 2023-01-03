@@ -13,6 +13,8 @@ import { RegisterComponent } from './views/register/register.component';
 import { ProductsContainerComponent } from './views/products-container/products-container.component';
 import { Router } from 'express';
 import { jwtInterceptor } from './common/jwt.interceptor';
+import { NavbarComponent } from './views/navbar/navbar.component';
+import { ContactComponent } from './views/contact/contact.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +24,9 @@ import { jwtInterceptor } from './common/jwt.interceptor';
     ProductComponent,
     ProfileComponent,
     RegisterComponent,
-    ProductsContainerComponent
+    ProductsContainerComponent,
+    NavbarComponent,
+    ContactComponent
   ],
   imports: [
     BrowserModule,
