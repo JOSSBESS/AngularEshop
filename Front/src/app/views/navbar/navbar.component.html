@@ -3,9 +3,9 @@
         <div class = 't title'>ESHOP OF COLORS</div>
       <li><a class = 't nb' href="contact">contact</a></li>
       <li><a class = 't nb' href="products">products</a></li>
-      <li><div *ngIf="!isLog" ><a class = 't nb' href="login">login</a></div></li>
-      <li><div *ngIf="isLog"><a class = 't nb' href='profile'>profile</a></div></li>
-      <li><div *ngIf="isLog"><a class = 't nb' (click)='logout()' href='login'>logout</a></div></li>
-      
+      <li *ngIf="!isLog"><a class = 't nb' href="login">login</a></li>
+      <li *ngIf="isLog"><a class = 't nb' href='profile'>profile</a></li>
+      <li *ngIf="isAdm"><a class = 't nb' href="dashboard" >Dashmin</a></li>
+      <li *ngIf="isLog"><a class = 't nb' (click)='logout()' href='login'>logout</a></li>
     </ul>
     </div>

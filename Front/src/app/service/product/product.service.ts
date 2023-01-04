@@ -26,5 +26,4 @@ export class ProductService {
   getProducts() {
     return this.http.get<Product[]>(this.API_URL + '/api/products')
   }
-  
 }

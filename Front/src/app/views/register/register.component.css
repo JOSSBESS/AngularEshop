@@ -11,14 +11,16 @@
 
 .t1 {
     font-family: SF Pro Text,SF Pro Icons,Helvetica Neue,Helvetica,Arial,sans-serif;
-    color:rgb(0, 0, 0, 0.640);
+    color:rgb(0, 0, 0, 0.500);
     font-size: 30px; 
    
 }
 .t2 {
     font-family: SF Pro Text,SF Pro Icons,Helvetica Neue,Helvetica,Arial,sans-serif;
-    color:rgb(0, 0, 0, 0.640);
-    font-size: 30px; 
+    color:rgb(0, 0, 0, 0.500);
+    font-size: 25px; 
+    text-decoration-line: none;
+    font-weight: 600;
 
 
 }
@@ -31,21 +33,41 @@
     
 }
 
+.containertwo {
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    height:2vh;
+    
+}
+
 .row { 
     
     border-radius: 4px;
-    background: #e5e5e546;
+    background: #ffffff;
     box-shadow:  25px 25px 63px #cbcbcbb7,
              -25px -25px 63px #ffffff;
-    padding:30px;
+    padding:10px;
     border-style:solid;
     border-width: 0.01em;
     border-color: rgba(168, 168, 168, 0.2);
-
-    
 }
+
+.rowtwo { 
+    
+    border-radius: 4px;
+    background: #fdfdfd;
+    box-shadow:  25px 25px 63px #cbcbcbb7;
+            
+    padding:10px;
+    border-style:solid;
+    border-width: 0.1em;
+    border-color: rgba(168, 168, 168, 0.2);
+ 
+}
+
 .in {
-    font-size: 30px; 
+    font-size: 25px; 
 	border: none;
 	padding-top:5%;
 	width: 100%;

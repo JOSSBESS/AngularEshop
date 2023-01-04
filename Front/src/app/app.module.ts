@@ -15,6 +15,7 @@ import { Router } from 'express';
 import { jwtInterceptor } from './common/jwt.interceptor';
 import { NavbarComponent } from './views/navbar/navbar.component';
 import { ContactComponent } from './views/contact/contact.component';
+import { DashboardComponent } from './views/dashboard/dashboard.component';
 
 @NgModule({
   declarations: [
@@ -26,7 +27,8 @@ import { ContactComponent } from './views/contact/contact.component';
     RegisterComponent,
     ProductsContainerComponent,
     NavbarComponent,
-    ContactComponent
+    ContactComponent,
+    DashboardComponent
   ],
   imports: [
     BrowserModule,

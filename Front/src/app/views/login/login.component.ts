@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { ProfileService } from 'src/app/service/profile/profile.service';
 import { AuthService } from 'src/app/service/auth/auth.service';
 import { User } from 'src/app/model/User';
+import { json } from 'stream/consumers';
 
 @Component({
   selector: 'app-login',
@@ -14,10 +15,10 @@ export class LoginComponent implements OnInit  {
 
   username: string =''
   password: string =''
-  user:User = {username: '', role: 'user', password: '' , confirmpassword: '', email: ''}
+  user:User = {id:-1, username: '', role: 'user', email: ''}
   constructor(
     private _authService: AuthService,
-    private _ProfileService: ProfileService,
+    private _profileService: ProfileService,
     private router: Router
   ) { }
 
@@ -29,20 +30,15 @@ export class LoginComponent implements OnInit  {
 
       localStorage.setItem('token',`${data}`);
       this._authService.userSubject.next(`${data}`)
-      this.router.navigate(['/products'])
-     
-    })
 
-    this._ProfileService.getUserInfo().subscribe(data => {
-      this.user = data
-      if(data.role === "admin")
-        this.user.role = 'admin'
-        else {
-          this.user.role = 'user'
-        }
-        localStorage.setItem('role',this.user.role)
-    })
+        this._profileService.getUserInfo().subscribe(data =>{
+
+          var userRole = JSON.parse(data)
+          localStorage.setItem('role', userRole.userInf[3])
+        })
+        this.router.navigate(['/products'])
+    })    
   }
-
-  
 }
+
+

@@ -1,7 +1,6 @@
 import { Injectable } from '@angular/core';
 import { environment } from 'src/environments/environment';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { User } from 'src/app/model/User';
 
 @Injectable({
   providedIn: 'root'
@@ -23,7 +22,7 @@ export class ProfileService {
   ) { }
 
   getUserInfo() {
-    return this.http.get<User>(`${this.API_URL}/me`,this.optionrequest)
-  } 
+    return this.http.get<string>(this.API_URL+`/me`,this.optionrequest)
+  }; 
   
-} 
+}; 

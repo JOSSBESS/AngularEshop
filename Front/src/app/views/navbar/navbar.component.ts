@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from 'src/app/service/auth/auth.service';
 import { ProfileService } from 'src/app/service/profile/profile.service';
-import { User } from 'src/app/model/User';
+
 
 @Component({
   selector: 'app-navbar',
@@ -10,28 +10,23 @@ import { User } from 'src/app/model/User';
 })
 export class NavbarComponent implements OnInit {
   isLog: boolean = false;
-  user:User = {username: '', role: 'user', password: '' , confirmpassword: '', email: ''}
-  
+  isAdm: boolean = false;
+
   constructor(
     private _authService: AuthService,
-    private _ProfileService:ProfileService
+    private _profileService:ProfileService
   ) { }
 
   ngOnInit(): void {
     this._authService.user.subscribe(data => {
-      if (data)
-      this.isLog = true
-      else {
-        this.isLog = false
-      }
+      data ? this.isLog = true: this.isLog = false;
+    })
 
-     } )
-
+ 
   }
 
   logout () {
-    this._authService.logout();
-
+    this._authService.logout();  
   }
 }
  

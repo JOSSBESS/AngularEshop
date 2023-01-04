@@ -9,17 +9,23 @@ import { ProfileService } from 'src/app/service/profile/profile.service';
 })
 export class ProfileComponent implements OnInit {
 
-  user:User = {username: '', role: 'user', password: '' , confirmpassword: '', email: ''}
+  user: User = {id:-1, username: '', role: 'user', email: '' };
+  isAdm:boolean = false;
   constructor(
-    private _ProfileService:ProfileService
+    private _profileService:ProfileService
   ) { }
 
   ngOnInit(): void {
-    this._ProfileService.getUserInfo().subscribe(data => {
-      this.user = data
-      if(data.role === "admin")
-        this.user.role = 'admin'
-        else
-          this.user.role = 'user'
+    this._profileService.getUserInfo().subscribe(data =>{
+      var userRole = JSON.parse(data)
+       userRole.userInf[3] === "admin" ? this.isAdm = true : this.isAdm= false;
+    })
+
+
+
+    this._profileService.getUserInfo().subscribe(data => {
+     
+    
+     
     })
 }}

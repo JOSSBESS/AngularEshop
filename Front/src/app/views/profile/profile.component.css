@@ -1,0 +1,87 @@
+.t0 {
+    font-family: SF Pro Text,SF Pro Icons,Helvetica Neue,Helvetica,Arial,sans-serif;
+    color:rgba(0, 0, 0, 0.640);
+    font-size: 40px; 
+    text-align: center;
+    margin-bottom: 25px;
+    font-weight:bold;
+}
+
+
+.t1 {
+    font-family: SF Pro Text,SF Pro Icons,Helvetica Neue,Helvetica,Arial,sans-serif;
+    color:rgb(0, 0, 0, 0.500);
+    font-size: 30px; 
+    margin:10px;
+}
+.t2 {
+    font-family: SF Pro Text,SF Pro Icons,Helvetica Neue,Helvetica,Arial,sans-serif;
+    color:rgb(0, 0, 0, 0.500);
+    font-size: 15px; 
+    text-decoration-line: none;
+    font-weight: 600;
+
+}
+
+.container {
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    height:80vh;
+    
+}
+
+
+.row { 
+    
+    border-radius: 4px;
+    background: #ffffff;
+    box-shadow:  15px 15px 53px #cbcbcbb7;
+    padding:10px;
+    border-style:solid;
+    border-width: 0.01em;
+    border-color: rgba(168, 168, 168, 0.2);
+
+    
+}
+.rowtwo { 
+    
+    border-radius: 4px;
+    background: #fdfdfd;
+    box-shadow:  25px 25px 63px #cbcbcbb7,
+             -25px -25px 63px #ffffff;
+    padding:10px;
+    border-style:solid;
+    border-width: 0.1em;
+    border-color: rgba(168, 168, 168, 0.2);
+ 
+}
+
+.in {
+    font-size: 20px; 
+	border: none;
+	padding-top:2%;
+	width: 100%;
+    border-radius: 4px;
+    outline: none;
+    margin-bottom: 15px;
+    color:rgba(0, 0, 0, 0.647);
+    background-color: rgba(196, 196, 196, 0.4);
+    box-shadow: outset 8px 8px 8px #cbced1,
+              outset -8px -8px 8px #ffffff;
+}
+.in:hover , .in:active {
+    background-color: rgba(192, 192, 192, 0.6);
+}
+
+.button {
+    height:50px;
+    width: 80%;
+    outline:none;
+    border: none;
+    border-radius: 4px;
+ }
+ .button-container {
+    display: flex;
+    justify-content: center;
+ }

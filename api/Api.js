@@ -104,10 +104,10 @@ app.get('/me', checkTokenMiddleware, (req, res) => {
     // Décodage du token
     const decoded = jwt.decode(token, { complete: false })
     
-    return res.json({  id: decoded.id,
-                        username: decoded.username,
-                        email: decoded.email,
-                        role: decoded.role })
+    return res.json({userInf:[decoded.id,
+                            decoded.username,
+                            decoded.email,
+                            decoded.role]})
 })
 
 app.post('/login', (req, res) => {
