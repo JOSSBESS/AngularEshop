@@ -103,7 +103,6 @@ app.get('/me', checkTokenMiddleware, (req, res) => {
     const token = req.headers.authorization && extractBearerToken(req.headers.authorization)
     // Décodage du token
     const decoded = jwt.decode(token, { complete: false })
-    
     return res.json({userInf:[decoded.id,
                             decoded.username,
                             decoded.email,

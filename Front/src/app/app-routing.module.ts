@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { Router } from 'express';
 import { AuthGuard } from './common/auth.guard';
 import { RoleGuard } from './common/role.guard';
 import { ContactComponent } from './views/contact/contact.component';

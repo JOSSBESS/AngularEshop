@@ -6,24 +6,25 @@
         <form>
             <div class = "t0">Profile</div>
                 <div>    
-                    <label class="t2">Username</label><input type="text" class="in" placeholder=" Username" value="">
+                    <label class="t2">Username</label><input type="text" class="in" placeholder="" value="">
                 </div>
                 <div>
-                    <label class="t2">Email</label><input type="text" class="in" placeholder=" Old Password" value="">
+                    <label class="t2">Email</label><input type="text" class="in" placeholder="" value="">
                 </div>
                 <div>
-                    <label class="t2">Old Password</label><input type="text" class="in" placeholder=" New Password" value="">
+                    <label class="t2">Old Password</label><input type="password" class="in" placeholder="" value="">
                 </div>
                 <div>
-                    <label class="t2">new Password</label><input type="text" class="in" placeholder=" New Password" value="">
+                    <label class="t2">new Password</label><input type="password" class="in"  value="">
                 </div>
-                    <label class="t2">Confirm New Password</label><input type="text" class="in" placeholder=" Confirm New Password" value="">
-                <div class = "button-container">
-                    <button class = "t1 button " type="submit">Update</button>
-                </div> 
-        </form> 
+                    <label class="t2">Confirm New Password</label><input type="password" class="in"  value="">
+        </form>
+        <div class = "button-container">
+            <button class = "t1 button " type="submit">Update</button>
+        <div *ngIf="isAdm">
+            <a href="dashboard"><button class = "t1 button red ">dashboard</button></a>
+        </div>
+        </div>  
     </div>
 </div>
-<div *ngIf="isAdm">
-    <a href="dashboard"><button class = "t1 button ">Admin management dashboard</button></a>
-</div> 
+ 

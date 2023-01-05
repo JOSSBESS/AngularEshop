@@ -1,20 +1,26 @@
 .t {
     font-family: SF Pro Text,SF Pro Icons,Helvetica Neue,Helvetica,Arial,sans-serif;
-    color:rgb(0, 0, 0);
+    color:rgba(0, 0, 0, 0.700);
+    font-size:2em;
+    font-weight:bold;
 }
 .title {
-font-size:2em;
-font-weight:bold;
+    font-family: SF Pro Text,SF Pro Icons,Helvetica Neue,Helvetica,Arial,sans-serif;
+    color:rgba(0, 0, 0, 0.9);
+    font-size:3vw;
+    
+    font-weight:900;
+    padding-right: 5%;
 
     
 }
 
 .navbar {
-    padding: 1px;
+    padding: 0px;
     background-color:#ffffff;
     margin-left:-8px;
     margin-right:-8px;
-    margin-top:-22px;
+    margin-top:-10px;
     box-shadow:  -5px 0px 20px #bebebe
              
 
@@ -25,7 +31,6 @@ ul {
     padding-right: 10%;
     display: flex;
     flex-wrap: wrap;
-    justify-content: space-between;
     align-items: center;
     
 
