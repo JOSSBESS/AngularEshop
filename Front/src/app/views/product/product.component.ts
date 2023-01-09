@@ -7,11 +7,15 @@ import { Product } from 'src/app/model/Product';
   styleUrls: ['./product.component.css']
 })
 export class ProductComponent implements OnInit {
-  @Input() item: Product = {id: 0, name: '', description: '', price: 0}
+  @Input() item: Product = {productname: '',productdescription:'', productprice:0, productimg:'' }
+
+  isAdm:boolean = false;
   constructor() { }
 
-
   ngOnInit(): void {
+    console.log(this.item.productdescription)
+    let role = localStorage.getItem("role");
+    role === "admin" ? this.isAdm = true : this.isAdm= false;
   }
 
 }

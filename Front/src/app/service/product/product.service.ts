@@ -24,6 +24,11 @@ export class ProductService {
   ) { }
 
   getProducts() {
-    return this.http.get<Product[]>(this.API_URL + '/api/products')
+    return this.http.get<Product[]>(this.API_URL + '/products')
   }
+
+  InsertProduct(productname:string, productdescription:string, productprice:number, productimg:string) {
+    return this.http.post(this.API_URL + '/products/', {productname:productname, productprice:productprice, productimg:productimg })
+  }
+
 }

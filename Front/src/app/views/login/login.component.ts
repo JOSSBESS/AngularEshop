@@ -11,9 +11,9 @@ import { AuthService } from 'src/app/service/auth/auth.service';
 
 export class LoginComponent implements OnInit  {
 
-  username: string =''
-  password: string =''
- 
+  username: string ='';
+  password: string ='';
+  
   constructor(
     private _authService: AuthService,
     private _profileService: ProfileService,
@@ -23,17 +23,14 @@ export class LoginComponent implements OnInit  {
   ngOnInit(): void { }
   
   login() {
-    this._authService.login(this.username, this.password)
-    .subscribe(data => {
+    this._authService.login(this.username, this.password).subscribe(data => {
+      localStorage.setItem('token',data.token);
+      this._authService.userSubject.next(data.token);
 
-      localStorage.setItem('token',`${data}`);
-      this._authService.userSubject.next(`${data}`)
-
-        this._profileService.getUserInfo().subscribe(data =>{
-          var user = JSON.parse(data)
-          localStorage.setItem('role', user.userInf[3])
-        })
-        this.router.navigate(['/products'])
+      this._profileService.getUserInfo().subscribe(data =>{
+        localStorage.setItem('role', data.role);
+        this.router.navigate(['/products']);
+      })
     })    
   }
 }

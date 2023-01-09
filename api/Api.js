@@ -51,7 +51,7 @@ const checkTokenMiddleware = (req, res, next) => {
     }
 
     // Véracité du token
-    jwt.verify(token, SECRET, (err, decodedToken) => {
+    jwt.verify(token, SECRET, (err) => {
         if (err) {
             res.status(401).json({ message: 'Error. Bad token' })
         } else {
@@ -103,10 +103,10 @@ app.get('/me', checkTokenMiddleware, (req, res) => {
     const token = req.headers.authorization && extractBearerToken(req.headers.authorization)
     // Décodage du token
     const decoded = jwt.decode(token, { complete: false })
-    return res.json({userInf:[decoded.id,
-                            decoded.username,
-                            decoded.email,
-                            decoded.role]})
+    return res.json({  id:decoded.id,
+                        name:decoded.username,
+                        email:decoded.email,
+                        role:decoded.role   })
 })
 
 app.post('/login', (req, res) => {
@@ -123,7 +123,7 @@ app.post('/login', (req, res) => {
         if(result.length <= 0){
             return res.status(400).json({ message: 'you don\'t have a account' })
        }
-        bcrypt.compare(passwords, result[0].password,function (error, result) {
+        bcrypt.compare(passwords, result[0].password,(error, result) => {
             if(result === false) {
                 return res.status(400).json({ message: 'wrong password' })
             }
@@ -141,20 +141,21 @@ app.post('/login', (req, res) => {
 
         }, SECRET, { expiresIn: '3 hours' })
         console.log(token)
-        return res.json(token)
+        return res.json({token:token})
 
         })
     }) 
 })
 
+
 app.get('/users', (req, res) => {
 
     db.query('SELECT name from users',(error, result) =>{
         if(error){
-        return res.status(400).json({ message: 'database empty' })
-    }
-    return res.json({result})
- })
+            return res.status(400).json({ message: 'database empty' })
+        }
+        return res.json({result})
+    })
 })
 
 
@@ -163,21 +164,35 @@ app.put('/user/', checkTokenMiddleware, (req, res) => {
 const token = req.headers.authorization && extractBearerToken(req.headers.authorization)
 // Décodage du token
 const decoded = jwt.decode(token, { complete: false })
-    if(decoded.role ="admin") {
-        db.query('UPDATE users SET email = ?, name = ?, password = ? WHERE id = ?;',[req.body.email, req.body.name, req.body.password, req.body.id],(error,result) => {
-            if (error){
-                return res.status(400).json({ message: 'problem in your update profile' })
-            }
-            return res.json({message: 'profile updated by admin'})
+    if(req.body.oldpassword || req.body.newpassword || req.body.confirmpassword){
+        db.query('SELECT password FROM users WHERE id = ?;',[req.body.id],(error,result) => {
+            bcrypt.compare(req.body.oldpassword, result[0].password, (error, result) => {
+                if(result === false) {
+                    return res.status(400).json({ message: 'wrong password' })
+                }
+                else if (req.body.newpassword !== req.body.confirmpassword) {
+                    return res.status(400).json({ message: ' password don\t match' })
+                }
+
+                else if(decoded.role ="admin") {
+                    db.query('UPDATE users SET email = ?, name = ?, password = ? WHERE id = ?;',[req.body.email, req.body.name, req.body.newpassword, req.body.id],(error,result) => {
+                        if (error){
+                            return res.status(400).json({ message: 'problem in your update profile' })
+                        }
+                        return res.json({message: 'profile updated by admin'})
+                    })
+                }
+                db.query('UPDATE users SET email = ?, name = ?, password = ? WHERE id = ?;',[req.body.email, req.body.name, req.body.newpassword, decoded.id],(error,result) => {
+                    if (error){
+                        return res.status(400).json({ message: 'problem in your update profile' })
+                    }
+                    return res.json({message: 'profile updated by user'})
+                })           
+            })
         })
-    }
-    db.query('UPDATE users SET email = ?, name = ?, password = ? WHERE id = ?;',[req.body.email, req.body.name, req.body.password, decoded.id],(error,result) => {
-        if (error){
-            return res.status(400).json({ message: 'problem in your update profile' })
-        }
-        return res.json({message: 'profile updated by user'})
-    })   
+    }      
 })
+
 
 
 app.get('/user/', checkTokenMiddleware, (req, res) => {
@@ -196,7 +211,7 @@ const decoded = jwt.decode(token, { complete: false })
     }         
 })
 
-// produit route
+
 
 app.delete('/user/:id', checkTokenMiddleware, (req, res) => {
     const id = req.params.id
@@ -209,7 +224,7 @@ const decoded = jwt.decode(token, { complete: false })
         res.json({ message:'the account have been deleted'})
     } else if (decoded.role === 'admin'){
         db.query('DELETE FROM users where id = ?;',[req.params.id],(result,error)=>{
-          (!error)? res.json({ message:'the account id have been deleted'}) : res.json({ message:'the account id have been deleted'});
+          !error? res.json({ message:'the account id have been deleted'}) : res.json({ message:'the account id have no\'t been deleted'});
         })
     }
 })
@@ -221,19 +236,20 @@ const auth = req.headers.authorization
 const token = auth && extractBearerToken(auth)
 const decoded = jwt.decode(token, { complete: false })
 
-if(!req.body.name || !req.body.price){
-    return res.status(400).json({message: 'error no productname or/and no productprice'})
+if(decoded.role !== "admin"){
+    res.status(400).json({message:'you are no\'t authorized to create a product'})
 }
-
-
-db.query('INSERT INTO products (productname, productprice, userid) VALUES ( ?, ?, ?)',[req.body.name.toString(), +req.body.price, +decoded.id],(error, result) => {
+if(!req.body.productname || !req.body.productprice || !req.body.productdescription || req.body.productimage){
+    return res.status(400).json({message: 'error no productname or/and no productprice or/and no image or/and no description'})
+}
+    db.query('INSERT INTO products (productname, productprice, userid) VALUES ( ?, ?, ?)',[req.body.name.toString(), +req.body.price, +decoded.id],(error, result) => {
     if(error){
         return res.status(400).json({message: error})
     }
     return res.json({message: 'your product have been added succesfully'})
 })
-
 })
+
 
 app.get('/product/', checkTokenMiddleware, (req, res) => {
 // Récupération du token
@@ -252,6 +268,7 @@ db.query('SELECT * FROM products WHERE name =?;',[req.body.name.toString()],(err
 })
 })
 
+
 app.put('/product/', checkTokenMiddleware, (req, res) => {
     const token = req.headers.authorization && extractBearerToken(req.headers.authorization)
     const decoded = jwt.decode(token, { complete: false })
@@ -259,12 +276,13 @@ app.put('/product/', checkTokenMiddleware, (req, res) => {
     res.status(400).json({message: 'error no productname'})
     }
     db.query('UPDATE products SET productname = ?, productprice = ? WHERE userid = ?;',[req.body.name.toString(), req.body.price,decoded.id],(error, result) => {
-    if(error){
-        res.status(400).json({message: 'error problem with your price or name'})
-    }
-    res.json({message: result})
+        if(error){
+            res.status(400).json({message: 'error problem with your price or name'})
+        }
+        res.json({message: result})
     })
 })
+
 
 app.delete('/product/:id', checkTokenMiddleware, (req, res) => {
     const token = req.headers.authorization && extractBearerToken(req.headers.authorization)
@@ -275,17 +293,14 @@ app.delete('/product/:id', checkTokenMiddleware, (req, res) => {
 })
 
 
-
-
 app.get('/products', (req, res) => {
-    db.query('SELECT productname, productprice FROM products;',(error, result) => {
+    db.query('SELECT productname, productdescription, productprice, productimg FROM products;',(error, result) => {
         if(error){
             return res.status(400).json({message: 'no products in database'})
         }
-        return res.json({message: result[0].productname,message: result[0].productprice})
+        return res.json(result)
     })
 })
-
 
 
 
@@ -295,11 +310,12 @@ app.get('/products/', (req, res) => {
 
     }
 
-db.query('SELECT productname, productprice FROM products WHERE userid = ?;',[req.body.id], (error, result) => {
+db.query('SELECT productname, productdescription, productprice, productimg FROM products WHERE userid = ?;',[req.body.id], (error, result) => {
     if(error){
         return res.status(400).json({message: 'this id have no user'})
     }
-    return res.json({message: result[0].productname,message: result[0].productprice})
+    return res.json({product: {productname : result[0].productname,
+                                productprice : result[0].productprice}})
     })
 })
 

@@ -3,7 +3,7 @@ import { environment } from 'src/environments/environment';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { Router } from '@angular/router';
-
+import { Token } from 'src/app/model/User';
 
 @Injectable({
   providedIn: 'root'
@@ -29,7 +29,7 @@ export class AuthService {
    }
 
   login(username: string, password: string) {
-    return this.http.post(`${this.API_URL}/login`, {username:username, password:password },this.optionrequest)
+    return this.http.post<Token>(`${this.API_URL}/login`, {username:username, password:password })
   }
   
   register(username: string,email: string, password: string, confirmpassword: string) {

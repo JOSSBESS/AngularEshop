@@ -16,13 +16,16 @@
 }
 .t2 {
     font-family: SF Pro Text,SF Pro Icons,Helvetica Neue,Helvetica,Arial,sans-serif;
-    color:rgba(56, 56, 56, 0.6);
+    color:rgba(49, 49, 49, 0.7);
     font-size: 18px; 
     text-decoration-line: none;
     font-weight: 600;
 
 }
 
+.t3 {
+    color:rgb(255, 187, 0);
+}
 .container {
     display:flex;
     justify-content: center;
@@ -34,14 +37,13 @@
 .row { 
     border-radius: 4px;
     background: #ffffff;
-    box-shadow:  15px 15px 53px #cbcbcbb7;
     padding-left:24px;
     padding-right:24px;
     padding-top:4px;
     padding-bottom:8px;
     border-style:solid;
     border-width: 0.01em;
-    border-color: rgba(168, 168, 168, 0.2);
+    border-color: rgba(168, 168, 168, 0.4);
 
     
 }
@@ -61,32 +63,33 @@
 .in {
     font-size: 20px; 
 	border: none;
-	padding-top:5%;
+	padding:auto;
+   
 	width: 100%;
     border-radius: 4px;
     outline: none;
     margin-bottom: 15px;
     color:rgba(0, 0, 0, 0.647);
     background-color: rgba(196, 196, 196, 0.4);
-    box-shadow: outset 8px 8px 8px #cbced1,
-              outset -8px -8px 8px #ffffff;
+  
 }
 .in:hover , .in:active {
     background-color: rgba(192, 192, 192, 0.6);
 }
 .button-container{
     display: flex;
-
 }
 
 .button {
     height:50px;
     outline:none;
-    border: none;
-    border-radius: 4px;
     cursor: pointer;
     width: 100%;
-    box-shadow:  -8px 15px 12px #0000004e;
+    box-shadow:  -8px 14px 4px #0000004e;
+    border-style: solid;
+    border-color: rgba(100, 100, 100, 0.4);
+    border-width: 0.01em;
+    border-radius: 4px;
  }
 
  .red {
@@ -94,7 +97,6 @@
     background-color: rgb(255, 0, 0);
     width: 100%;
     box-shadow:  -8px 15px 12px #0000006a;
-
  }
  .red:hover {
     background-color: rgb(194, 0, 0);
