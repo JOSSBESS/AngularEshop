@@ -28,7 +28,7 @@ export class ProductService {
   }
 
   InsertProduct(productname:string, productdescription:string, productprice:number, productimg:string) {
-    return this.http.post(this.API_URL + '/products/', {productname:productname, productprice:productprice, productimg:productimg })
+    return this.http.post(this.API_URL + '/product/create', {productname:productname,productdescription:productdescription, productprice:productprice, productimg:productimg })
   }
 
 }

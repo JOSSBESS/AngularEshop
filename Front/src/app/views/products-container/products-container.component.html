@@ -5,7 +5,7 @@
         <label>price</label><input type="text" class="in"  value="">
         <img [src]="url" title="insert product" height="100px" width="100px" />
         <label>image</label><input type="file" id="img" accept="image/*" (change)="onSelect($event)" >
-        <button type = "button">add product</button>
+        <button type = "button" (click)="upload()">add product</button>
     </div>
     
     <div *ngFor="let product of products">

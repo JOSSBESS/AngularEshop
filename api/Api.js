@@ -239,10 +239,10 @@ const decoded = jwt.decode(token, { complete: false })
 if(decoded.role !== "admin"){
     res.status(400).json({message:'you are no\'t authorized to create a product'})
 }
-if(!req.body.productname || !req.body.productprice || !req.body.productdescription || req.body.productimage){
+if(!req.body.productname || !req.body.productprice || !req.body.productdescription || req.body.productimg){
     return res.status(400).json({message: 'error no productname or/and no productprice or/and no image or/and no description'})
 }
-    db.query('INSERT INTO products (productname, productprice, userid) VALUES ( ?, ?, ?)',[req.body.name.toString(), +req.body.price, +decoded.id],(error, result) => {
+    db.query('INSERT INTO products (productname, productdescription, productprice, productimg) VALUES ( ?, ?, ?, ?)',[req.body.productname,req.body.productdescription, +req.body.price, req.body.productimg],(error, result) => {
     if(error){
         return res.status(400).json({message: error})
     }

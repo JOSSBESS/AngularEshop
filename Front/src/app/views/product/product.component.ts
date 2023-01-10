@@ -13,7 +13,6 @@ export class ProductComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
-    console.log(this.item.productdescription)
     let role = localStorage.getItem("role");
     role === "admin" ? this.isAdm = true : this.isAdm= false;
   }
