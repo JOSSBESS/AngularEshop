@@ -13,13 +13,6 @@ export class ProductService {
   
   private API_URL = environment.API_URL
 
-  optionrequest = {
-    headers: new HttpHeaders
-    ({
-      'Content-Type': 'application/json'
-    }), responseType: 'text' as 'json'
-  }
-
   constructor(
     private http: HttpClient
   ) { }

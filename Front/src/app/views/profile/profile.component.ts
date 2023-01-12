@@ -21,7 +21,7 @@ export class ProfileComponent implements OnInit {
     let role = localStorage.getItem("role");
     role === "admin" ? this.isAdm = true : this.isAdm= false;
 
-    this._userService.getUserInfo().subscribe(data =>{
+    this._userService.getMeInfo().subscribe(data =>{
     this.name = data.name;
     this.email = data.email;
     })

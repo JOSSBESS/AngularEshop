@@ -27,9 +27,9 @@ export class LoginComponent implements OnInit  {
       localStorage.setItem('token',data.token);
       this._authService.userSubject.next(data.token);
 
-      this._userService.getUserInfo().subscribe(data =>{
-        localStorage.setItem('role', data.role);
-        this.router.navigate(['/products']);
+        this._userService.getMeInfo().subscribe(data =>{
+          localStorage.setItem('role', data.role);
+          this.router.navigate(['/products']);
       })
     })    
   }

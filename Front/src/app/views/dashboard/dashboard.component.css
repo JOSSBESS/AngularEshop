@@ -5,7 +5,8 @@
     border-style:inset;
     border-width:2px;
     border-radius:5px;
-    border-color: rgba(0, 0, 0, 0.5);
+    background: #e8f9ff;
+    border-color: rgba(0, 0, 0, 0.2);
     padding:4px;
     margin:5px;
     width:fit-content
@@ -13,18 +14,18 @@
 
 .contain1 {
     margin-left: 2px;
-    border-style: inset;
+    border-style: outset;
     border-width: 0.1em;
     border-radius:5px;
     background: #efefef;
-    border-color: rgba(0, 0, 0, 0.3);
+    border-color: rgba(0, 0, 0, 0.2);
     width: 50px;
     padding:10px;
 }
 
 .contain2 {
     margin-left: 2px;
-    border-style: inset;
+    border-style: outset;
     border-width: 0.1em;
     border-radius:5px;
     background: #efefef;
@@ -35,7 +36,7 @@
 
 .contain3 {
     margin-left: 2px;
-    border-style: inset;
+    border-style: outset;
     border-width: 0.1em;
     border-radius:5px;
     background: #efefef;
@@ -46,7 +47,7 @@
 
 .contain4 {
     margin-left: 2px;
-    border-style: inset;
+    border-style: outset;
     border-width: 0.1em;
     border-radius:5px;
     background: #efefef;
@@ -62,8 +63,8 @@
     border:none;
     border-radius: 4px;
     font-weight: 600;
-    color:#efefef
-    
+    color:#efefef;
+
 }
 .red{
     background-color: red;

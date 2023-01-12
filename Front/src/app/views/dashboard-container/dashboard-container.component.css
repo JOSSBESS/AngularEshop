@@ -1,10 +1,14 @@
+.sup-container {
+display: flex;
+justify-content: center;
+}
+
 .container {
-    background: #f5f5f5;
+    background: #ffffff;
     padding: 10px;
     border-radius:5px ;
     width:fit-content;
     border-style:outset;
     border-width: 2px;
-    border-color: rgba(168, 168, 168, 0.2);
-    
+    border-color: rgba(0, 0, 0, 0.2);
 }

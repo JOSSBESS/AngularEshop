@@ -17,6 +17,7 @@ import { NavbarComponent } from './views/navbar/navbar.component';
 import { ContactComponent } from './views/contact/contact.component';
 import { DashboardComponent } from './views/dashboard/dashboard.component';
 import { DashboardContainerComponent } from './views/dashboard-container/dashboard-container.component';
+import { DashboardUserComponent } from './views/dashboard-user/dashboard-user.component';
 
 @NgModule({
   declarations: [
@@ -30,7 +31,8 @@ import { DashboardContainerComponent } from './views/dashboard-container/dashboa
     NavbarComponent,
     ContactComponent,
     DashboardComponent,
-    DashboardContainerComponent
+    DashboardContainerComponent,
+    DashboardUserComponent
   ],
   imports: [
     BrowserModule,

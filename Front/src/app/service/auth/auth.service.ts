@@ -10,15 +10,9 @@ import { Token } from 'src/app/model/User';
 })
 export class AuthService {
   private API_URL = environment.API_URL
-
-  optionrequest = {
-    headers: new HttpHeaders
-    ({
-      'Content-Type': 'application/json'
-    }), responseType: 'text' as 'json'
-  }
   public user: Observable<string>
   public userSubject: BehaviorSubject<string>
+
 
   constructor(
     private http: HttpClient,
@@ -28,12 +22,12 @@ export class AuthService {
     this.user = this.userSubject.asObservable();
    }
 
-  login(username: string, password: string) {
+  login(username: string, password: string): Observable<Token> {
     return this.http.post<Token>(`${this.API_URL}/login`, {username:username, password:password })
   }
   
-  register(username: string,email: string, password: string, confirmpassword: string) {
-    return this.http.post(`${this.API_URL}/register`, {username:username,email:email, password:password, confirmpassword:confirmpassword },this.optionrequest)
+  register(username: string,email: string, password: string, confirmpassword: string): Observable<string> {
+    return this.http.post<string>(`${this.API_URL}/register`, {username:username,email:email, password:password, confirmpassword:confirmpassword })
   }
 
   logout()  {
