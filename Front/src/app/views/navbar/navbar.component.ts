@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from 'src/app/service/auth/auth.service';
-import { ProfileService } from 'src/app/service/profile/profile.service';
+
 
 
 @Component({
@@ -10,7 +10,7 @@ import { ProfileService } from 'src/app/service/profile/profile.service';
 })
 export class NavbarComponent implements OnInit {
   isLog: boolean = false;
-  isAdm: boolean = false;
+  
 
   constructor(
     private _authService: AuthService,
@@ -20,8 +20,6 @@ export class NavbarComponent implements OnInit {
     this._authService.user.subscribe(data => {
       data ? this.isLog = true: this.isLog = false;
     })
-
- 
   }
 
   logout () {

@@ -16,6 +16,7 @@ import { jwtInterceptor } from './common/jwt.interceptor';
 import { NavbarComponent } from './views/navbar/navbar.component';
 import { ContactComponent } from './views/contact/contact.component';
 import { DashboardComponent } from './views/dashboard/dashboard.component';
+import { DashboardContainerComponent } from './views/dashboard-container/dashboard-container.component';
 
 @NgModule({
   declarations: [
@@ -28,7 +29,8 @@ import { DashboardComponent } from './views/dashboard/dashboard.component';
     ProductsContainerComponent,
     NavbarComponent,
     ContactComponent,
-    DashboardComponent
+    DashboardComponent,
+    DashboardContainerComponent
   ],
   imports: [
     BrowserModule,

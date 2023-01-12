@@ -1,0 +1,91 @@
+
+.sup-container {
+    display: flex;
+    flex-wrap: wrap;
+    border-style:inset;
+    border-width:2px;
+    border-radius:5px;
+    border-color: rgba(0, 0, 0, 0.5);
+    padding:4px;
+    margin:5px;
+    width:fit-content
+}
+
+.contain1 {
+    margin-left: 2px;
+    border-style: inset;
+    border-width: 0.1em;
+    border-radius:5px;
+    background: #efefef;
+    border-color: rgba(0, 0, 0, 0.3);
+    width: 50px;
+    padding:10px;
+}
+
+.contain2 {
+    margin-left: 2px;
+    border-style: inset;
+    border-width: 0.1em;
+    border-radius:5px;
+    background: #efefef;
+    border-color: rgba(0, 0, 0, 0.3);
+    width:100px;
+    padding:10px;
+}
+
+.contain3 {
+    margin-left: 2px;
+    border-style: inset;
+    border-width: 0.1em;
+    border-radius:5px;
+    background: #efefef;
+    border-color: rgba(0, 0, 0, 0.3);
+    width:200px;
+    padding:10px;
+}
+
+.contain4 {
+    margin-left: 2px;
+    border-style: inset;
+    border-width: 0.1em;
+    border-radius:5px;
+    background: #efefef;
+    border-color: rgba(0, 0, 0, 0.3);
+    width:50px;
+    padding:10px;
+}
+
+.button {
+    margin-left: 2px;
+    outline:none;
+    cursor: pointer;
+    border:none;
+    border-radius: 4px;
+    font-weight: 600;
+    color:#efefef
+    
+}
+.red{
+    background-color: red;
+}
+.yellow{
+    background-color: rgb(255, 196, 0);
+}
+
+.red:hover, .red:active {
+    background-color: rgb(185, 0, 0);
+}
+
+.yellow:hover, .yellow:active {
+    background-color: rgb(255, 145, 0);
+}
+
+.txt {
+    font-weight: 600;
+    color:rgb(79, 79, 79);
+    margin-top: 2px;
+    padding-top:10px;
+    padding-left:10px;
+}
+
+

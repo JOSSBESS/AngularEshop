@@ -31,15 +31,14 @@
     height:30em;
     
 }
+
 .containertwo {
     display:flex;
     justify-content: center;
-    align-items: center;
-    
+    margin-top: -60px;
 }
 
 .row { 
-    
     border-radius: 4px;
     background: #ffffff;
     box-shadow:  15px 15px 53px #cbcbcbb7;

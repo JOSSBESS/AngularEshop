@@ -8,7 +8,7 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 
-export class ProfileService {
+export class UserService {
   
   private API_URL = environment.API_URL
 
@@ -18,5 +18,16 @@ export class ProfileService {
 
   getUserInfo(): Observable<User> {
     return this.http.get<User>(this.API_URL+`/me`)
+  };
+
+  getAllUser(): Observable<User[]> {
+    return this.http.get<User[]>(this.API_URL+'/users')
+  };
+
+  deleteUser(id: number) {
+    console.log(`/users/${id}`)
+    return this.http.delete<string>(this.API_URL+`/user/${id}`)
+  } 
   }
-}; 
+
+ 

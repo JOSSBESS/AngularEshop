@@ -21,7 +21,8 @@ export class ProductsContainerComponent implements OnInit{
   ngOnInit(): void { 
 
     let role = localStorage.getItem("role");
-      role === "admin" ? this.isAdm = true : this.isAdm= false;
+    role === "admin" ? this.isAdm = true : this.isAdm= false;
+
     this._productService.getProducts().subscribe(data => {
     this.products = data
     })

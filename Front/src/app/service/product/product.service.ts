@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { environment } from 'src/environments/environment';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Product } from 'src/app/model/Product';
+import { Observable } from 'rxjs';
 
 
 @Injectable({
@@ -23,7 +24,7 @@ export class ProductService {
     private http: HttpClient
   ) { }
 
-  getProducts() {
+  getProducts(): Observable<Product[]> {
     return this.http.get<Product[]>(this.API_URL + '/products')
   }
 

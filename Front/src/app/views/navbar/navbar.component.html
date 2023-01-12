@@ -2,7 +2,7 @@
     <ul>
         <div class = 't title'>ESHOP OF COLORS</div>
       <li><a class = 't nb' href="contact">Contact</a></li>
-      <li *ngIf="isLog"><a class = 't nb' href="products">Products</a></li>
+      <li><a class = 't nb' href="products">Products</a></li>
       <li *ngIf="!isLog"><a class = 't nb' href="login">Login</a></li>
       <li *ngIf="isLog"><a class = 't nb' href='profile'>Profile</a></li>
       <li *ngIf="isLog"><a class = 't nb' (click)='logout()' href='login'>Logout</a></li>

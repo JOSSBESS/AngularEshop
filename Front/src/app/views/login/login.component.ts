@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { ProfileService } from 'src/app/service/profile/profile.service';
+import { UserService } from 'src/app/service/user/user.service';
 import { AuthService } from 'src/app/service/auth/auth.service';
 
 @Component({
@@ -16,7 +16,7 @@ export class LoginComponent implements OnInit  {
   
   constructor(
     private _authService: AuthService,
-    private _profileService: ProfileService,
+    private _userService: UserService,
     private router: Router
   ) { }
 
@@ -27,7 +27,7 @@ export class LoginComponent implements OnInit  {
       localStorage.setItem('token',data.token);
       this._authService.userSubject.next(data.token);
 
-      this._profileService.getUserInfo().subscribe(data =>{
+      this._userService.getUserInfo().subscribe(data =>{
         localStorage.setItem('role', data.role);
         this.router.navigate(['/products']);
       })

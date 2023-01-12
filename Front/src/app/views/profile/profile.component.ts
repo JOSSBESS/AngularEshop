@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { ProfileService } from 'src/app/service/profile/profile.service';
-import { User } from 'src/app/model/User';
+import { UserService } from 'src/app/service/user/user.service';
+
 
 @Component({
   selector: 'app-profile',
@@ -14,18 +14,17 @@ export class ProfileComponent implements OnInit {
   isAdm:boolean = false;
 
   constructor(
-    private _profileService: ProfileService,
+    private _userService: UserService,
   ) { }
 
   ngOnInit(): void {
     let role = localStorage.getItem("role");
     role === "admin" ? this.isAdm = true : this.isAdm= false;
 
-    this._profileService.getUserInfo().subscribe(data =>{
+    this._userService.getUserInfo().subscribe(data =>{
     this.name = data.name;
     this.email = data.email;
     })
 
-    this
   }
 }
