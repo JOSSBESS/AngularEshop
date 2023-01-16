@@ -30,7 +30,6 @@
     display:flex;
     justify-content: center;
     align-items: center;
-    height:78vh;
     
 }
 
@@ -76,9 +75,6 @@
 .in:hover , .in:active {
     background-color: rgba(192, 192, 192, 0.6);
 }
-.button-container{
-    display: flex;
-}
 
 .button {
     height:50px;
@@ -90,15 +86,23 @@
     border-color: rgba(100, 100, 100, 0.4);
     border-width: 0.01em;
     border-radius: 4px;
- }
+}
 
- .red {
+.red {
     color:rgb(255, 255, 255);
     background-color: rgb(255, 0, 0);
     width: 100%;
     box-shadow:  -8px 15px 12px #0000006a;
  }
- .red:hover {
+.red:hover {
     background-color: rgb(194, 0, 0);
 }
- 
+
+.size{
+    width:80px ;
+    font-weight: 600;
+
+}
+.pos{
+margin-top: 40px;
+}

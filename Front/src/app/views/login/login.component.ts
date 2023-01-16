@@ -25,10 +25,12 @@ export class LoginComponent implements OnInit  {
   login() {
     this._authService.login(this.username, this.password).subscribe(data => {
       localStorage.setItem('token',data.token);
+      
       this._authService.userSubject.next(data.token);
 
         this._userService.getMeInfo().subscribe(data =>{
           localStorage.setItem('role', data.role);
+          localStorage.setItem("id",`${data.id}`)
           this.router.navigate(['/products']);
       })
     })    

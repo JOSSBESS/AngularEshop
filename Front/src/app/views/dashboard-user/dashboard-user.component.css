@@ -1,0 +1,105 @@
+
+.t0 {
+    font-family: SF Pro Text,SF Pro Icons,Helvetica Neue,Helvetica,Arial,sans-serif;
+    color:rgba(0, 0, 0, 0.640);
+    font-size: 40px; 
+    text-align: center;
+    margin-top:4px;
+    font-weight:bold;
+}
+
+.t1 {
+    font-family: SF Pro Text,SF Pro Icons,Helvetica Neue,Helvetica,Arial,sans-serif;
+    color:rgb(0, 0, 0, 0.500);
+    font-size: 30px; 
+    margin:10px;
+    font-weight: 600;
+}
+.t2 {
+    font-family: SF Pro Text,SF Pro Icons,Helvetica Neue,Helvetica,Arial,sans-serif;
+    color:rgba(49, 49, 49, 0.7);
+    font-size: 18px; 
+    text-decoration-line: none;
+    font-weight: 600;
+
+}
+
+.t3 {
+    color:rgb(255, 187, 0);
+}
+.container {
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    height:78vh;
+    
+}
+
+.row { 
+    border-radius: 4px;
+    background: #ffffff;
+    padding-left:24px;
+    padding-right:24px;
+    padding-top:4px;
+    padding-bottom:8px;
+    border-style:solid;
+    border-width: 0.01em;
+    border-color: rgba(168, 168, 168, 0.4);
+    background-color: rgba(255, 0, 0, 0.7);
+
+    
+}
+.rowtwo { 
+    
+    border-radius: 4px;
+    background: #fdfdfd;
+    box-shadow:  25px 25px 63px #cbcbcbb7,
+             -25px -25px 63px #ffffff;
+    padding:10px;
+    border-style:solid;
+    border-width: 0.1em;
+    border-color: rgba(168, 168, 168, 0.2);
+ 
+}
+
+.in {
+    font-size: 20px; 
+	border: none;
+	padding:auto;
+	width: 100%;
+    border-radius: 4px;
+    outline: none;
+    margin-bottom: 15px;
+    color:rgba(0, 0, 0, 0.647);
+    background-color: rgba(196, 196, 196, 0.4);
+  
+}
+
+.button {
+    height:50px;
+    outline:none;
+    cursor: pointer;
+    width: 100%;
+    box-shadow:  -8px 14px 4px #0000004e;
+    border-style: solid;
+    border-color: rgba(96, 0, 0, 0.4);
+    border-width: 0.01em;
+    border-radius: 4px;
+ }
+
+ .red {
+    background-color: rgba(252, 252, 252, 0.5);
+    width: 100%;
+    box-shadow:  -8px 15px 12px #0000006a;
+ }
+ .red:hover, .red:active {
+    background-color: rgba(194, 0, 0, 0.7);
+}
+.txt{
+    padding: 4px;
+    border-style: dotted;
+    border-width: 0.1em;
+    border-radius: 4px;
+    color:white;
+    text-decoration: none;;
+}

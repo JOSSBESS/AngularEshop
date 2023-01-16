@@ -1,22 +1,29 @@
 import { Component, OnInit } from '@angular/core';
 import { Product } from 'src/app/model/Product';
 import { ProductService } from 'src/app/service/product/product.service';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient} from '@angular/common/http';
 
 @Component({
   selector: 'app-products-container',
   templateUrl: './products-container.component.html',
   styleUrls: ['./products-container.component.css']
 })
+
+
 export class ProductsContainerComponent implements OnInit{
   products: Product[] = [];
   isAdm:boolean = false;
-  urllink:string =''; url = 'assets/insert.png'; file:string =''; name:string =''; 
-  productname:string = ''; productdescription:string = ''; productprice:number = 0; productimg:string = '';
+
+  urllink:string =''; url = 'assets/insert.png'; file:any ; name:string ='';
+
+  id:number = 0; productname:string = ''; productdescription:string = ''; productprice:number = 0; productimg:string = '';
+
+
   constructor(
     private _productService: ProductService,
     private http: HttpClient
-    ) { }
+    
+    ) {}
 
   ngOnInit(): void { 
 
@@ -25,6 +32,7 @@ export class ProductsContainerComponent implements OnInit{
 
     this._productService.getProducts().subscribe(data => {
     this.products = data
+    
     })
   };
 
@@ -41,13 +49,14 @@ export class ProductsContainerComponent implements OnInit{
     }
    };
 
-   upload() {
-  
-    this.http.post('assets/products/', this.file).subscribe(res =>
-    console.log(res))
-
+   upload() { 
+  const formData =new FormData()
+  formData.append('file',this.file)
+    this.http.post<any>('localhost:4200/assets',formData)
+   
     this.productimg = this.urllink
     this._productService.InsertProduct(this.productname, this.productdescription, this.productprice, this.productimg)
   };
+ 
 };
  
