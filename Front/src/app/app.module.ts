@@ -11,13 +11,13 @@ import { ProfileComponent } from './views/profile/profile.component';
 import { FormsModule } from '@angular/forms';
 import { RegisterComponent } from './views/register/register.component';
 import { ProductsContainerComponent } from './views/products-container/products-container.component';
-import { Router } from 'express';
 import { jwtInterceptor } from './common/jwt.interceptor';
 import { NavbarComponent } from './views/navbar/navbar.component';
 import { ContactComponent } from './views/contact/contact.component';
 import { DashboardComponent } from './views/dashboard/dashboard.component';
 import { DashboardContainerComponent } from './views/dashboard-container/dashboard-container.component';
 import { DashboardUserComponent } from './views/dashboard-user/dashboard-user.component';
+import { BucketComponent } from './views/bucket/bucket.component';
 
 @NgModule({
   declarations: [
@@ -32,7 +32,8 @@ import { DashboardUserComponent } from './views/dashboard-user/dashboard-user.co
     ContactComponent,
     DashboardComponent,
     DashboardContainerComponent,
-    DashboardUserComponent
+    DashboardUserComponent,
+    BucketComponent
   ],
   imports: [
     BrowserModule,

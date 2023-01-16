@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { environment } from 'src/environments/environment';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { Router } from '@angular/router';
 import { Token } from 'src/app/model/User';
@@ -31,8 +31,7 @@ export class AuthService {
   }
 
   logout()  {
-    localStorage.removeItem('token');
-    localStorage.removeItem('role');
+    localStorage.clear
     this.userSubject.next('');
     this.router.navigate(['/login']);
   }
