@@ -1,1 +1,7 @@
-<p>bucket works!</p>
+<div class = "container">
+    <div class ="one">{{item.id}}</div>
+    <div class ="id" *ngIf ="isAdm">ID:{{item.userid}}</div>
+    <div class ="two">{{item.productname}}</div>
+    <div>{{item.productprice}}€</div>
+    <button class = "button red" (click)="deleteBuck($event)" type="button" >delete purchase</button>
+<div>
