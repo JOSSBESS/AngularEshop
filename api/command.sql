@@ -16,6 +16,9 @@ productprice DOUBLE,
 productimg VARCHAR(50)
 );
 
+INSERT INTO products (productname, productdescription, productprice, productimg)
+VALUES (product1, "it's the product1", 4,52, assets/products/blue.png)
+
 CREATE TABLE bucket
 (
 id INT PRIMARY KEY NOT NULL AUTO_INCREMENT,
@@ -24,7 +27,14 @@ userid INT,
 purchased INT
 );
 
-INSERT INTO products (productname, productdescription, productprice, productimg)
-VALUES (product1, "it's the product1", 4,52, assets/products/blue.png);
+INSERT INTO bucket (userid, productid, purchased)
+VALUES (0,0,0);
 
 UPDATE users set role='admin' where id=x;
+
+select bucket.productid, products.productname, products.productprice
+FROM products ,bucket
+WHERE products.id = bucket.productid
+AND bucket.userid = ?;
+
+select 
