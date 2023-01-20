@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { UserService } from 'src/app/service/user/user.service';
 import { AuthService } from 'src/app/service/auth/auth.service';
@@ -9,7 +9,7 @@ import { AuthService } from 'src/app/service/auth/auth.service';
   styleUrls: ['./login.component.css']
 })
 
-export class LoginComponent implements OnInit  {
+export class LoginComponent {
 
   username: string ='';
   password: string ='';
@@ -20,20 +20,20 @@ export class LoginComponent implements OnInit  {
     private router: Router
   ) { }
 
-  ngOnInit(): void { }
+
   
   login() {
     this._authService.login(this.username, this.password).subscribe(data => {
       localStorage.setItem('token',data.token);
-      
       this._authService.userSubject.next(data.token);
 
-        this._userService.getMeInfo().subscribe(data =>{
-          localStorage.setItem('role', data.role);
-          localStorage.setItem("id",`${data.id}`)
-          this.router.navigate(['/products']);
+      this._userService.getMeInfo().subscribe(data =>{
+        localStorage.setItem('role', data.role);
+        localStorage.setItem("id",`${data.id}`)
+        this._authService.userRoleSubject.next(data.role);
+        this.router.navigate(['/products']);
       })
-    })    
+    })   
   }
 }
 

@@ -10,9 +10,10 @@ import { Token } from 'src/app/model/User';
 })
 export class AuthService {
   private API_URL = environment.API_URL
-  public user: Observable<string>
   public userSubject: BehaviorSubject<string>
-
+  public user: Observable<string>
+  public userRoleSubject: BehaviorSubject<string>
+  public userRole: Observable<string>
 
   constructor(
     private http: HttpClient,
@@ -20,8 +21,9 @@ export class AuthService {
   ) {
     this.userSubject = new BehaviorSubject<string>(localStorage.getItem('token') || '');
     this.user = this.userSubject.asObservable();
-   }
-
+    this.userRoleSubject = new BehaviorSubject<string>(localStorage.getItem('role') || '');
+    this.userRole = this.userRoleSubject.asObservable();
+  }
   login(username: string, password: string): Observable<Token> {
     return this.http.post<Token>(`${this.API_URL}/login`, {username:username, password:password })
   }
@@ -31,8 +33,9 @@ export class AuthService {
   }
 
   logout()  {
-    localStorage.clear
+    localStorage.clear()
     this.userSubject.next('');
+    this.userRoleSubject.next('');
     this.router.navigate(['/login']);
   }
 }

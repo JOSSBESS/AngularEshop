@@ -3,7 +3,6 @@ import { environment } from 'src/environments/environment';
 import { HttpClient } from '@angular/common/http';
 import { User, Userboard } from 'src/app/model/User';
 import { Observable } from 'rxjs';
-import { EmailValidator } from '@angular/forms';
 
 @Injectable({
   providedIn: 'root'

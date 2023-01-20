@@ -18,11 +18,12 @@ import { DashboardComponent } from './views/dashboard/dashboard.component';
 import { DashboardContainerComponent } from './views/dashboard-container/dashboard-container.component';
 import { DashboardUserComponent } from './views/dashboard-user/dashboard-user.component';
 import { BucketComponent } from './views/bucket/bucket.component';
+import { BucketContainerComponent } from './views/bucket-container/bucket-container.component';
+import { NgxPaginationModule } from 'ngx-pagination';
 
 @NgModule({
   declarations: [
     AppComponent,
-  
     LoginComponent,
     ProductComponent,
     ProfileComponent,
@@ -33,13 +34,15 @@ import { BucketComponent } from './views/bucket/bucket.component';
     DashboardComponent,
     DashboardContainerComponent,
     DashboardUserComponent,
-    BucketComponent
+    BucketComponent,
+    BucketContainerComponent
   ],
   imports: [
     BrowserModule,
     HttpClientModule,
     AppRoutingModule,
-    FormsModule
+    FormsModule,
+    NgxPaginationModule
 
   ],
   providers: [

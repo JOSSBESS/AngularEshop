@@ -13,7 +13,7 @@ export class BucketComponent implements OnInit {
   @Input() item: Bucket = {id:0,userid:0, productname:'',productprice:0}
   isAdm = false;
   constructor(
-    private _bucketService: BucketService
+   private _bucketService: BucketService
   ) { }
 
   deleteBuck(event:any) {
@@ -27,9 +27,10 @@ export class BucketComponent implements OnInit {
   };
   ngOnInit(): void {
   let role =localStorage.getItem('role')
-  if(role ==='admin' ){
-    this.isAdm = true
+    if(role === 'admin' ){
+      this.isAdm = true
+    }else {
+    this.isAdm = false
+    }
   }
-  this.isAdm = false
-  }
-}
+};

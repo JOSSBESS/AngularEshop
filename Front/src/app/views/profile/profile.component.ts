@@ -16,7 +16,6 @@ export class ProfileComponent implements OnInit {
   newpassword:string ='';
   confirmpassword:string ='';
   id: number = 0;
-  isAdm:boolean = false;
 
   constructor(
     private _userService: UserService,
@@ -24,10 +23,7 @@ export class ProfileComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    let role = localStorage.getItem("role");
-    console.log(role);
     this.id = Number(localStorage.getItem("id"));
-    role === "admin" ? this.isAdm = true : this.isAdm= false;
     this._userService.getMeInfo().subscribe(data =>{
     this.name = data.name;
     this.email = data.email;

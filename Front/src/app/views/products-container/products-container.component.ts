@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core'
 import { Product } from 'src/app/model/Product';
 import { ProductService } from 'src/app/service/product/product.service';
 import { HttpClient} from '@angular/common/http';
@@ -31,10 +31,9 @@ export class ProductsContainerComponent implements OnInit{
     role === "admin" ? this.isAdm = true : this.isAdm= false;
 
     this._productService.getProducts().subscribe(data => {
-    this.products = data
-    
+    this.products = data   
     })
-  };
+  }
 
   onSelect(event:any){
     if(event.target.files[0]){

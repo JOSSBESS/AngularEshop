@@ -1,28 +1,29 @@
 <div class="container">
-
-    <div class="row">
-        <form>
-            <div class = "t0">Profile</div>
-                <div>    
-                    <label class="t2">Username:<span class = "t3"> {{this.name}}</span></label><input [(ngModel)]="name" name="name" id="username" type="text" class="in"  value="">
-                </div>
-                <div>
-                    <label class="t2">Email: <span class = "t3"> {{this.email}}</span></label><input [(ngModel)]="email" name="email" id="email"type="email" class="in" placeholder="" value="">
-                </div>
-                <div>
-                    <label class="t2">Old Password</label><input [(ngModel)]="oldpassword" name="oldpassword" type="password" id="oldpassword" class="in" placeholder="" value="">
-                </div>
-                <div>
-                    <label class="t2">new Password</label><input [(ngModel)]="newpassword" name="newpassword" type="password" id="newpassword" class="in"  value="">
-                </div>
-                    <label class="t2">Confirm New Password</label><input [(ngModel)]="confirmpassword" name="confirmpassword" type="password" id="confirmpassword"class="in"  value="">
-                    
-                </form>
-                <button class = "t1 button " type="submit" (click)="update()" >Update</button>
-        <div *ngIf="isAdm">
-            <a href="dashboard"><button class = "t1 button red ">dashboard</button></a>
-        </div>
-         
-    </div> 
+	<div class="row">
+		<form>
+			<div class = "t0">
+				Profile
+			</div>
+			<div>
+				<label class="t2">Username:<span class = "t3"> {{this.name}}</span></label>
+				<input [(ngModel)]="name" name="name" id="username" type="text" class="in"  value="">
+			</div>
+			<div>
+				<label class="t2">Email: <span class = "t3"> {{this.email}}</span></label>
+				<input [(ngModel)]="email" name="email" id="email"type="email" class="in" placeholder="" value="">
+			</div>
+			<div>
+				<label class="t2">Old Password</label>
+				<input [(ngModel)]="oldpassword" name="oldpassword" type="password" id="oldpassword" class="in" placeholder="" value="">
+			</div>
+			<div>
+				<label class="t2">new Password</label>
+				<input [(ngModel)]="newpassword" name="newpassword" type="password" id="newpassword" class="in"  value="">
+			</div>
+			<label class="t2">Confirm New Password</label>
+			<input [(ngModel)]="confirmpassword" name="confirmpassword" type="password" id="confirmpassword"class="in"  value="">
+		</form>
+		<button class = "t1 button " type="submit" (click)="update()" >Update</button>
+	</div>
 </div>
 <button class = " pos button red size" type="button" (click)="deleteAcc($event)">delete your account</button>

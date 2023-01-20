@@ -1,15 +1,15 @@
 import { Injectable } from '@angular/core';
 import { environment } from 'src/environments/environment';
-import { HttpClient,HttpRequest, HttpEvent } from '@angular/common/http';
-import { Product } from 'src/app/model/Product';
+import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import { Bucket } from 'src/app/model/Bucket';
 
 
 @Injectable({
   providedIn: 'root'
 })
 
-export class ProductService {
+export class BucketService {
   
   private API_URL = environment.API_URL
 
@@ -17,15 +17,16 @@ export class ProductService {
     private http: HttpClient
   ) { }
 
-  getProducts(): Observable<Product[]> {
-    return this.http.get<Product[]>(this.API_URL + '/bucket/$id')
+  GetBucket(id:number): Observable<Bucket[]> {
+    return this.http.get<Bucket[]>(this.API_URL + `/bucket/${id}`)
   }
 
-  InsertProduct(productname:string, productdescription:string, productprice:number, productimg:string) {
-    return this.http.post(this.API_URL + '/bucket', {productname:productname,productdescription:productdescription, productprice:productprice, productimg:productimg })
+
+  AddToBucket(productid:number): Observable<String> {
+    return this.http.post<string>(this.API_URL + '/bucket', {productid:productid})
   }
 
-  DeleteProduct(id:number):Observable<string> {
+  deleteBucket(id:number):Observable<string> {
     return this.http.delete<string>(this.API_URL + `/bucket/${id}`)
   }
 }

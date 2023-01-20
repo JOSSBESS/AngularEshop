@@ -1,13 +1,20 @@
-
 <div class = "card">
-    <div class = "card-header">
-      
-   <img class = "img" src="{{item.productimg}}">
-        <div class = "card-title txt"><h2>{{item.productname}}</h2></div>
-        <div class = "card-subtitle txt"><p>{{item.productdescription}}</p></div>
-        <div class="card-price txt">{{item.productprice}} € </div>
-        <div class ="card-button">
-            <button type = "button" (click)="addToBucket()" class = "green">add to bucket</button>
-            <button *ngIf="isAdm" (click)="deleteProd($event)"type = "button" class ="red">delete product</button></div> 
-    </div>
+	<div class = "card-header">
+		<img class = "img" src="{{item.productimg}}">
+		<div class = "card-title txt">
+			<h2>{{item.productname}}</h2>
+		</div>
+		<div class = "card-subtitle txt">
+			<p>
+				{{item.productdescription}}
+			</p>
+		</div>
+		<div class="card-price txt">
+			{{item.productprice}} € 
+		</div>
+		<div class ="card-button">
+			<button type = "button" (click)="addToBucket()" class = "green">add to bucket</button>
+			<button *ngIf="isAdm" (click)="deleteProd($event)"type = "button" class ="red">delete product</button>
+		</div>
+	</div>
 </div>

@@ -5,6 +5,7 @@ import { Router } from '@angular/router';
 import { BucketService } from 'src/app/service/bucket/bucket.service';
 import { Bucket } from 'src/app/model/Bucket';
 
+
 @Component({
   selector: 'app-dashboard',
   templateUrl: './dashboard.component.html',
@@ -31,16 +32,6 @@ export class DashboardComponent {
         next: res => window.location.reload(),
         error: err => console.error(err)
       })
-    }
-  };
-  deleteBuck(event:any) {
-    if(confirm('Are you sure you want to delete this product of your bucket ?')) {
-      event.preventDefault();
-      this._bucketService.deleteBucket(this.item.id).subscribe({
-        next: res => window.location.reload(),
-        error: err => console.error(err)
-      })
-
     }
   };
 }

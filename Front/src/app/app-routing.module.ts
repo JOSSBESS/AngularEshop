@@ -9,7 +9,7 @@ import { ProfileComponent } from './views/profile/profile.component';
 import { RegisterComponent } from './views/register/register.component';
 import { DashboardContainerComponent } from './views/dashboard-container/dashboard-container.component';
 import { DashboardUserComponent } from './views/dashboard-user/dashboard-user.component';
-import { BucketContainerComponent } from './views/bucket/bucket-container.component';
+import { BucketContainerComponent } from './views/bucket-container/bucket-container.component';
 
 
 const routes: Routes = [
