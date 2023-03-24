@@ -1,10 +1,12 @@
-<div class = "sup-container">
-    <div class = "contain1">{{account.id}}</div>     
+<div class = "container">
+    <details>
+    <summary class = "row">  
     <div class = "contain2">{{account.name}}</div>
     <div class = "contain3">{{account.email}}</div>
     <div class = "contain4">{{account.role}}</div>
-    
+    </summary>
     <button class = "button yellow" type="button" (click)="accTarget()" >Show account</button>
     <button class = "button red" type="button" (click)="deleteAcc($event)">delete account</button>
+    </details>
+      
 </div>
-     

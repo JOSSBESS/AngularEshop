@@ -22,7 +22,12 @@ export class NavbarComponent implements OnInit {
       data ? this.isLog = true: this.isLog = false;
     })
     this._authService.userRole.subscribe(data => {
-      data ? this.isAdm = true: this.isAdm = false;
+      if(data == 'admin'){
+        this.isAdm = true;
+        console.log(data)
+      } else {
+      this.isAdm = false;
+      }
     }) 
   }
   logout () {

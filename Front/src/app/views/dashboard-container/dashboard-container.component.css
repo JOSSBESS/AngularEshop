@@ -17,25 +17,24 @@ justify-content: center;
 .label-container {
     display: flex;
     grid-column-start: auto;
+    background-color: rgb(232, 232, 232);
+    border-radius: 5px;
 }
 .font{
     font-weight: 600;
-    color:rgb(79, 79, 79);
+    color:rgb(93, 93, 93);
 }
-.label1 {
-    grid-column-start: auto;
-    margin-left: 0.2em;
-}
+
 .label2 {
-    margin-left: 2em;
+    margin-left: 0.5em;
 
 }
 .label3 {
-    margin-left: 4.5em;
+    margin-left: 3.4em;
 
 }
 .label4 {
-    margin-left: 10.5em;
+    margin-left: 9.2em;
 }
 
 .test{

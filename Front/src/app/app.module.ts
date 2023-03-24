@@ -1,10 +1,8 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { HttpClient, HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
-
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-
 import { LoginComponent } from './views/login/login.component';
 import { ProductComponent } from './views/product/product.component';
 import { ProfileComponent } from './views/profile/profile.component';
@@ -35,7 +33,8 @@ import { NgxPaginationModule } from 'ngx-pagination';
     DashboardContainerComponent,
     DashboardUserComponent,
     BucketComponent,
-    BucketContainerComponent
+    BucketContainerComponent,
+    
   ],
   imports: [
     BrowserModule,

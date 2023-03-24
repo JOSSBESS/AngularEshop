@@ -26,7 +26,6 @@ app.use(express.urlencoded({ extended: true})) // Activation de x-www-form-urlen
 
 db.connect(err => {
     if(err) {
-        console.log('disconnected')
         throw err
     }
     console.log('connected')
@@ -179,7 +178,7 @@ let id = 0
         })
     }
     if(!req.body.email || !req.body.name){
-        
+        return res.status(400).json({message: 'need a name or  a email'})
     }else
         db.query('UPDATE users SET email = ?, name = ? WHERE id = ?;',[req.body.email, req.body.name, +req.body.id],(error,result) => {
         })
